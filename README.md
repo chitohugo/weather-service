@@ -10,7 +10,7 @@ python manage.py runserver
 ### Route
 Host: http://127.0.0.1:8000/
 ##### API WEATHER SERVICE
-GET /api/weather_services/?latitude=33&longitude=44&list_services=noaa,weather,accuweathe
+GET /api/weather_services/?latitude=33&longitude=44&list_services=noaa,weather,accuweather
 
 ___________________________________________________________
 
