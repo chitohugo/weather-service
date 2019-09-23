@@ -9,6 +9,13 @@ servi = Service()
 class WeatherServiceList(APIView):
     @staticmethod
     def get(request):
+        """
+        Return current average temperature.
+
+        :param latitude: float. (33.4)
+        :param logintude: float. (44.0)
+        :param list_services: string of service. ('noaa', 'accuweather', 'weather')
+        """
 
         # Validate fields 
         if not request.query_params.get('latitude', '') and not request.query_params.get('longitude', ''):
