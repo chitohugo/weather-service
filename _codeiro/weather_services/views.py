@@ -14,7 +14,7 @@ class WeatherServiceList(APIView):
 
         :param latitude: float. (33.4)
         :param logintude: float. (44.0)
-        :param list_services: string of service. ('noaa', 'accuweather', 'weather')
+        :param filters: string of service. (noaa,accuweather,weather)
         """
 
         # Validate fields 
@@ -28,11 +28,11 @@ class WeatherServiceList(APIView):
             return Response("Required is longitude", status=status.HTTP_400_BAD_REQUEST)
 
         # Validate services 
-        if not request.query_params.get('list_services', ''):
+        if not request.query_params.get('filters', ''):
             return Response("Required is list_services", status=status.HTTP_400_BAD_REQUEST)
 
         params_services = ['noaa', 'accuweather', 'weather']
-        list_services = request.query_params.get('list_services').split(',')
+        list_services = request.query_params.get('filters').split(',')
         services = [item for item in list_services if item in params_services]
 
         if not services:
