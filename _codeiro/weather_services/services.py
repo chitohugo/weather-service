@@ -3,11 +3,6 @@ import json
 
 
 class Service(object):
-    def service(self, argument, **kwargs):
-        service_name = 'get_service_' + str(argument)
-        service = getattr(self, service_name)
-        return service(kwargs)
-
     @staticmethod
     def get_service_noaa(kwargs):
         method = 'GET'

@@ -38,8 +38,13 @@ class WeatherServiceList(APIView):
             "lon": lon,
             "latlon": "{},{}".format(lat, lon)
         }
+        filters_services = {
+            "noaa": servi.get_service_noaa,
+            "accuweather": servi.get_service_accuweather,
+            "weather": servi.get_service_weather,
+        }
 
-        results = [servi.service(service, **kwargs) for service in services]
+        results = [filters_services[service](kwargs) for service in services]
         average = sum(results)
         average = average / len(results)
         celsius = (average - 32) * 5 / 9
